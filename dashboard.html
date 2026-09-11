@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management System</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="sidebar-icon">
+                📚
+            </div>
+
+            <h2>Library</h2>
+
+            <p>Management System</p>
+
+        </div>
+
+
+        <ul class="nav-menu">
+
+            <li>
+                <a href="#" class="nav-link" data-section="requests"
+                   onclick="showSection('requests'); return false;">
+                    📝 Issue Requests
+                </a>
+            </li>
+
+            <li>
+
+                <a href="#"
+                   class="nav-link active"
+                   data-section="dashboard"
+                   onclick="showSection('dashboard'); return false;">
+
+                    🏠 Dashboard
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#"
+                   class="nav-link"
+                   data-section="books"
+                   onclick="showSection('books'); return false;">
+
+                    📖 Books
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#"
+                   class="nav-link"
+                   data-section="members"
+                   onclick="showSection('members'); return false;">
+
+                    👥 Members
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+        <div class="sidebar-footer">
+
+            <span>Library Management System</span>
+
+            <small>Version 1.0</small>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="page-title">
+
+                <span class="title-icon">
+                    📊
+                </span>
+
+                <div>
+
+                    <h1>
+                        Library Dashboard
+                    </h1>
+
+                    <p>
+                        Manage your library efficiently
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button class="logout-btn"
+                    onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard"
+                 class="content-section active">
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-container">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Total Books
+                        </h3>
+
+                        <p id="totalBooks">
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Available Books
+                        </h3>
+
+                        <p id="availableBooks">
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📤
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Issued Books
+                        </h3>
+
+                        <p id="issuedBooks">
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Total Members
+                        </h3>
+
+                        <p id="totalMembers">
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="section-heading">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+                <p>
+                    Frequently used library operations
+                </p>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <div class="quick-action"
+                     onclick="showSection('books')">
+
+                    <div class="quick-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Books
+                        </h3>
+
+                        <p>
+                            Add, search and manage library books.
+                        </p>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+
+                <div class="quick-action"
+                     onclick="showSection('members')">
+
+                    <div class="quick-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Members
+                        </h3>
+
+                        <p>
+                            Add and manage library members.
+                        </p>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <!-- OVERVIEW -->
+
+            <div class="table-container">
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h2>
+                            Library Overview
+                        </h2>
+
+                        <p>
+                            Current books in your library
+                        </p>
+
+                    </div>
+
+
+                    <button class="primary-btn"
+                            onclick="showSection('books')">
+
+                        View All Books
+
+                    </button>
+
+                </div>
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Book ID
+                            </th>
+
+                            <th>
+                                Title
+                            </th>
+
+                            <th>
+                                Author
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="dashboardBookTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- BOOKS -->
+
+        <section id="books"
+                 class="content-section">
+
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <h2>
+                        Books
+                    </h2>
+
+                    <p>
+                        Manage all books in the library.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openBookModal()">
+
+                    + Add Book
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="bookSearch"
+                        placeholder="Search by ID, title or author..."
+                        onkeyup="searchBooks()">
+
+                </div>
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Book ID
+                            </th>
+
+                            <th>
+                                Title
+                            </th>
+
+                            <th>
+                                Author
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="bookTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MEMBERS -->
+
+        <section id="members"
+                 class="content-section">
+
+
+            <div class="section-page-header">
+
+                <div>
+
+                    <h2>
+                        Members
+                    </h2>
+
+                    <p>
+                        Manage registered library members.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-btn"
+                        onclick="openMemberModal()">
+
+                    + Add Member
+
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Member ID
+                            </th>
+
+                            <th>
+                                Member Name
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="memberTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <section id="requests" class="content-section">
+            <div class="section-page-header">
+                <div><h2>Issue Requests</h2><p>Approve or reject user book requests.</p></div>
+                <button class="primary-btn" onclick="loadIssueRequests()">Refresh</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Request ID</th><th>Book</th><th>User</th><th>Email</th><th>Action</th></tr></thead>
+                    <tbody id="issueRequestsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- BOOK MODAL -->
+
+<div id="bookModal"
+     class="modal">
+
+
+    <div class="modal-content">
+
+        <span class="close"
+              onclick="closeBookModal()">
+
+            &times;
+
+        </span>
+
+
+        <div class="modal-icon">
+            📚
+        </div>
+
+
+        <h2>
+            Add New Book
+        </h2>
+
+
+        <p>
+            Add a new book to your library.
+        </p>
+
+        <label>
+            Book ID <span class="optional-label">(optional)</span>
+        </label>
+
+        <input
+            type="number"
+            id="bookId"
+            min="1"
+            step="1"
+            placeholder="Leave blank to generate automatically">
+
+
+        <label>
+            Book Title
+        </label>
+
+
+        <input
+            type="text"
+            id="bookTitle"
+            placeholder="Enter book title">
+
+
+        <label>
+            Author
+        </label>
+
+
+        <input
+            type="text"
+            id="bookAuthor"
+            placeholder="Enter author name">
+
+
+        <button
+            class="primary-btn modal-btn"
+            onclick="addBook()">
+
+            Add Book
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- MEMBER MODAL -->
+
+<div id="memberModal"
+     class="modal">
+
+
+    <div class="modal-content">
+
+        <span class="close"
+              onclick="closeMemberModal()">
+
+            &times;
+
+        </span>
+
+
+        <div class="modal-icon">
+            👥
+        </div>
+
+
+        <h2>
+            Add New Member
+        </h2>
+
+
+        <p>
+            Register a new library member.
+        </p>
+
+
+        <label>
+            Member Name
+        </label>
+
+
+        <input
+            type="text"
+            id="memberName"
+            placeholder="Enter member name">
+
+
+        <button
+            class="primary-btn modal-btn"
+            onclick="addMember()">
+
+            Add Member
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-wrapper">
+
+        <div class="auth-brand">
+            <div class="brand-icon">📚</div>
+
+            <h1>Library Management</h1>
+
+            <p>
+                Manage books, members and library activities
+                from one simple dashboard.
+            </p>
+
+            <div class="brand-features">
+                <div>
+                    <span>📖</span>
+                    <strong>Manage Books</strong>
+                </div>
+
+                <div>
+                    <span>👥</span>
+                    <strong>Manage Members</strong>
+                </div>
+
+                <div>
+                    <span>🔄</span>
+                    <strong>Issue & Return</strong>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+
+                <div class="mobile-logo">📚</div>
+
+                <h2 id="authTitle">Welcome Back</h2>
+
+                <p id="authSubtitle">
+                    Sign in to continue to your library
+                </p>
+
+            </div>
+
+
+            <!-- SIGN IN -->
+
+            <div id="signinForm" class="auth-form-container">
+
+                <div class="login-type-switch" role="group" aria-label="Login type">
+                    <button type="button" class="login-type-btn active" data-login-role="USER">
+                        User Login
+                    </button>
+                    <button type="button" class="login-type-btn" data-login-role="ADMIN">
+                        Admin Login
+                    </button>
+                </div>
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✉️</span>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔒</span>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="togglePassword('loginPassword', this)"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>Remember me</span>
+
+                        </label>
+
+                        <a href="#" onclick="forgotPassword(event)">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Sign In
+                    </button>
+
+                </form>
+
+                <div class="divider"><span>OR</span></div>
+                <div id="googleLoginButton" class="google-login-button"></div>
+
+                <p class="switch-text">
+
+                    Don't have an account?
+
+                    <button
+                        type="button"
+                        class="switch-btn"
+                        onclick="showSignup()"
+                    >
+                        Create New Account
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <!-- SIGN UP -->
+
+            <div
+                id="signupForm"
+                class="auth-form-container hidden"
+            >
+
+                <form id="registerForm">
+
+                    <div class="input-group">
+
+                        <label for="signupName">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👤</span>
+
+                            <input
+                                type="text"
+                                id="signupName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="signupEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✉️</span>
+
+                            <input
+                                type="email"
+                                id="signupEmail"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="signupPassword">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔒</span>
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                placeholder="Create a password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="togglePassword('signupPassword', this)"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔐</span>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="terms-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the Terms & Conditions
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+
+                <div id="googleSignupButton" class="google-login-button"></div>
+
+
+                <p class="switch-text">
+
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        class="switch-btn"
+                        onclick="showSignin()"
+                    >
+                        Sign In
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <div
+                id="authMessage"
+                class="auth-message"
+            ></div>
+
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer onload="initializeGoogleLogin()"></script>
+
+</body>
+</html>

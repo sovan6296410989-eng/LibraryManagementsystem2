@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Catalogue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="sidebar-icon">📚</div>
+            <h2>Library</h2>
+            <p>Member Catalogue</p>
+        </div>
+        <ul class="nav-menu">
+            <li><button type="button" class="nav-link user-nav-button active" onclick="openUserCatalogue()">📖 Catalogue</button></li>
+        </ul>
+        <div class="sidebar-footer">
+            <span>Read-only access</span>
+            <small>Library Management System</small>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            <div class="page-title">
+                <span class="title-icon">📖</span>
+                <div>
+                    <h1>Library Catalogue</h1>
+                    <p>Browse available books</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <section id="userDashboard" class="content-section active">
+            <div class="stats-container">
+                <div class="stat-card"><div class="stat-icon">📚</div><div><h3>Total Books</h3><p id="totalBooks">0</p></div></div>
+                <div class="stat-card"><div class="stat-icon">✅</div><div><h3>Available Books</h3><p id="availableBooks">0</p></div></div>
+                <div class="stat-card"><div class="stat-icon">📤</div><div><h3>Issued Books</h3><p id="issuedBooks">0</p></div></div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <div><h2>Books</h2><p>Current availability in the library</p></div>
+                </div>
+                <table>
+                    <thead><tr><th>Book ID</th><th>Title</th><th>Author</th><th>Status</th><th>Action</th></tr></thead>
+                    <tbody id="userBookTableBody"></tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
