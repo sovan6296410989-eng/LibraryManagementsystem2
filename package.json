@@ -1,0 +1,15 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node start-all.js",
+    "build:java": "javac -cp \"./lib/mysql-connector-j-26.7.0.jar\" Server.java dbconnection.java",
+    "start:backend": "java -cp \".;./lib/mysql-connector-j-26.7.0.jar\" Server",
+    "start:frontend": "node frontend-server.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.3"
+  }
+}
